@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞行棋 · 棋盘</title>
+    <link rel="stylesheet" href="css/style.css?v=light-1">
+</head>
+<body>
+    <div id="localControls" class="local-controls"><button id="rollButton">掷骰子</button><button id="newGameBtn">重新选择人数</button></div>
+    <div class="game-layout">
+        <!-- 左侧面板 -->
+        <div class="side-panel left">
+            <div class="player-dice-panel yellow" id="panel-yellow" data-color="yellow">
+                <h3>🟡 黄色玩家</h3>
+                <div class="player-dice" id="dice-yellow">🎲</div>
+                <div class="pieces-status" id="yellowPieces"></div>
+            </div>
+            <div class="player-dice-panel green" id="panel-green" data-color="green">
+                <h3>🟢 绿色玩家</h3>
+                <div class="player-dice" id="dice-green">🎲</div>
+                <div class="pieces-status" id="greenPieces"></div>
+            </div>
+        </div>
+
+        <!-- 中间棋盘和消息 -->
+        <div class="center-area">
+            <div class="board-container">
+                <img src="img/xxx.jpg" alt="飞行棋棋盘" id="boardImage">
+                <!-- 棋子将通过JavaScript动态添加 -->
+            </div>
+
+            <div id="moveChoices" class="move-choices"></div>
+            <div class="message-panel" id="gameMessage">
+                等待游戏开始…
+            </div>
+        </div>
+
+        <!-- 右侧面板 -->
+        <div class="side-panel right">
+            <div class="player-dice-panel blue" id="panel-blue" data-color="blue">
+                <h3>🔵 蓝色玩家</h3>
+                <div class="player-dice" id="dice-blue">🎲</div>
+                <div class="pieces-status" id="bluePieces"></div>
+            </div>
+            <div class="player-dice-panel red" id="panel-red" data-color="red">
+                <h3>🔴 红色玩家</h3>
+                <div class="player-dice" id="dice-red">🎲</div>
+                <div class="pieces-status" id="redPieces"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 玩家选择界面（仅 local 模式显示） -->
+    <div class="player-select-overlay" id="playerSelectOverlay">
+        <div class="player-select-modal">
+            <h2 id="gameTitle">🎲 飞行棋 🎲</h2>
+            <p id="selectPlayersText" style="margin-bottom: 20px; color: #666;">请选择玩家人数（2-4人）</p>
+
+            <div class="player-options">
+                <button class="player-option-btn" data-players="2" data-colors="red,yellow">
+                    🔴🟡 双人对战<br><small>红色 vs 黄色</small>
+                </button>
+                <button class="player-option-btn" data-players="2" data-colors="blue,green">
+                    🔵🟢 双人对战<br><small>蓝色 vs 绿色</small>
+                </button>
+                <button class="player-option-btn" data-players="3" data-colors="red,yellow,blue">
+                    🔴🟡🔵 三人游戏<br><small>红黄蓝</small>
+                </button>
+                <button class="player-option-btn" data-players="4" data-colors="red,green,yellow,blue">
+                    🔴🟢🟡🔵 四人游戏<br><small>全部玩家</small>
+                </button>
+            </div>
+
+            <button class="start-game-btn" id="startGameBtn" disabled onclick="startGame()">开始游戏</button>
+        </div>
+    </div>
+
+    <script src="js/engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

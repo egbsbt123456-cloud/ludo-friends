@@ -1,0 +1,11 @@
+ludo.example.com {
+  encode zstd gzip
+  handle /api/* {
+    reverse_proxy 127.0.0.1:3007
+  }
+  handle {
+    root * /srv/ludo-friends/apps/web/dist
+    try_files {path} /index.html
+    file_server
+  }
+}
